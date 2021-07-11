@@ -9,26 +9,25 @@ import sys
 version = 0.1
  
 root = Tk()
-root.title("Calculator")
+root.title("Калькулятор")
  
-#calculator logic
+#логіка калькулятора
 def calc(key):
     global memory
     if key == "=":
-#exclude writing letters
         str1 = "-+0123456789.*/"
         if calc_entry.get()[0] not in str1:
-            calc_entry.insert(END, "First symbol is not number!")
-            messagebox.showerror("Error!", "You did not enter the number!")
-#score
+            calc_entry.insert(END, "Перший символ не є числом!")
+            messagebox.showerror("Error!", "Ви не ввели число!")
+#рахунок
         try:
             result = eval(calc_entry.get())
             calc_entry.insert(END, "=" + str(result))
         except:
             calc_entry.insert(END, "Error!")
-            messagebox.showerror("Error!", "Check the correctness of data")
+            messagebox.showerror("Error!", "Перевірте правильність даних!")
  
-#clear field
+#основна частина
     elif key == "C":
         calc_entry.delete(0, END)
     elif key == "sin":
@@ -43,10 +42,6 @@ def calc(key):
         tan=calc_entry.get()
         calc_entry.delete(0)
         calc_entry.insert(END, math.tan(float(tan)))
-    elif key == "ctg":
-        ctg=calc_entry.get()
-        calc_entry.delete(0)
-        calc_entry.insert(END, math.cos(float(cos))/math.sin(float(sin)))
     elif key == "log":
         log=calc_entry.get()
         calc_entry.delete(0)
@@ -57,13 +52,13 @@ def calc(key):
         calc_entry.insert(END, key)
  
  
-#buttons
+#кнопки
 bttn_list = [
 "7", "8", "9", "+", "*",
 "4", "5", "6", "-", "/",
 "1", "2", "3",  "=",
 "0", ".", "±",  "C",
-"sin", "cos", "tan", "ctg", "log"
+"sin", "cos", "tan", "log"
  
  
 ]
